@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 LABEL maintainer="Phillip Schichtel <phillip@schich.tel>"
 
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
  && apt-get --no-install-recommends install -y wget gnupg ca-certificates \
  && wget -O- https://rspamd.com/apt/gpg.key | apt-key add - \
- && echo "deb http://rspamd.com/apt/ stretch main" > /etc/apt/sources.list.d/rspamd.list \
+ && echo "deb http://rspamd.com/apt/ buster main" > /etc/apt/sources.list.d/rspamd.list \
  && apt-get purge -y wget gnupg \
  && apt-get autoremove --purge -y \
  && apt-get update
