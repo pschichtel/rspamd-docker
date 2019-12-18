@@ -16,11 +16,7 @@ RUN apt-get update \
 
 RUN apt-get --no-install-recommends install -y rspamd
 
-RUN echo 'type = "console";' >> /etc/rspamd/override.d/logging.inc \
- && echo 'bind_socket = "*:11332";' >> /etc/rspamd/override.d/worker-proxy.inc \
- && echo 'bind_socket = "*:11333";' >> /etc/rspamd/override.d/worker-normal.inc \
- && echo 'bind_socket = "*:11334";' >> /etc/rspamd/override.d/worker-controller.inc \
- && echo 'pidfile = false;' >> /etc/rspamd/override.d/options.inc
+COPY --chown=_rspamd:_rspamd overrides/* /etc/rspamd/override.d/
 
 VOLUME ["/var/lib/rspamd", "/etc/rspamd/local.d"]
 
