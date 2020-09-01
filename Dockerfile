@@ -14,7 +14,7 @@ RUN apt-get update \
  && apt-get autoremove --purge -y \
  && apt-get update
 
-RUN apt-get --no-install-recommends install -y rspamd libluajit-5.1-2
+RUN apt-get --no-install-recommends install -y rspamd
 
 COPY --chown=_rspamd:_rspamd overrides/* /etc/rspamd/override.d/
 
